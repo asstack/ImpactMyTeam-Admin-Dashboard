@@ -1,0 +1,7 @@
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
+  = f.input :email, :label => false, :autofocus => true
+  = f.input :password, :label => false
+  = f.input :remember_me, :class => 'checkbox', :as => :boolean if devise_mapping.rememberable?
+  - if devise_mapping.recoverable? && controller_name != 'passwords'
+    = link_to I18n.t('devise.passwords.forgotten_prompt'), new_password_path(resource_name), :class => 'forgot-password'
+  = f.button :submit, "Sign in", :class => 'red-button large-button pull-right'

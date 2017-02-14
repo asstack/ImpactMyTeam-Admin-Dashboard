@@ -1,0 +1,8 @@
+$('ul.cart_items').append('<%= escape_javascript(render 'cart_items/item', item: @cart_item) %>');
+$('#<%= dom_id(@cart_item, :select)%> .thumbnail').html('<%= image_tag @cart_item.image.small %>');
+$('.product-selection-header span#item_count').html('<%= @shopping_cart.items.sum(&:quantity) %>');
+$('#cart_subtotal').html('<%= number_to_currency(@shopping_cart.order_total) %>');
+
+// Show the new product in its form
+$('a.product-selection-button').click();
+$('#<%= dom_id(@cart_item, :select)%>').click();

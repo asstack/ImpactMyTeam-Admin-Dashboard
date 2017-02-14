@@ -1,0 +1,1 @@
+$('li#item_variant_<%= @cart_item.product_variant.id %>').html('<%= escape_javascript(render :partial => "cart_items/form", :locals => { :shopping_cart => @shopping_cart, :item => @cart_item })%>');

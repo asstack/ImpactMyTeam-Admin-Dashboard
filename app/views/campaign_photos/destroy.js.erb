@@ -1,0 +1,5 @@
+<% if @photo.persisted? %>
+    alert('The image could not be deleted.');
+<% else %>
+    $('li#<%= dom_id(@photo) %>').fadeOut(function () { $(this).remove(); })
+<% end %>

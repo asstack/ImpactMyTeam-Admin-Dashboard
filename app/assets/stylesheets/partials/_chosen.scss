@@ -1,0 +1,79 @@
+/* =============================================================================
+    Chosen Selects
+================================================================================ */
+
+/* @group Single Chosen */
+.chosen-container-single {
+  .chosen-single {
+    background-color: #fbfbfb;
+    @include background-clip(padding-box);
+    @include background-image(linear-gradient(bottom, rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12)));
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    color: #666;
+    font-weight: 600;
+    height: 48px;
+    line-height: 48px;
+    text-shadow: 0 -1px #fff;
+
+    div {
+      b {
+        background: none;
+
+        &:before {
+          content: '\f007';
+          display: block;
+          font-family: 'Icons';
+          position: relative;
+          right: 2px;
+          top: -2px;
+        }
+      }
+    }
+  }
+
+  .chosen-drop {
+    @include background-clip(padding-box);
+  }
+}
+
+/* @end */
+
+/* @group Results */
+.chosen-container {
+  .chosen-results {
+    .highlighted {
+      background-color: #eee;
+      em {
+        background: transparent;
+      }
+    }
+  }
+}
+
+/* @end */
+
+/* @group Active  */
+.chosen-container-active {
+  .chosen-single {
+    border: 1px solid #eee;
+  }
+
+  .chosen-choices {
+    border: 1px solid #eee;
+  }
+
+  &.chosen-with-drop {
+    .chosen-single {
+      background: #fff;
+
+      div b:before {
+        right: 10px;
+        @include transform(rotate(180deg));
+        top: 3px;
+      }
+    }
+  }
+}
+
+/* @end */

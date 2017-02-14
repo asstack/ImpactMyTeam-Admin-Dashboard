@@ -1,0 +1,18 @@
+- if schools.empty?
+  .summary
+    - if schools_query.blank?
+      %span Begin typing to find your school.
+    - else
+      .pull-right= link_to 'Add my School', new_school_path, class: 'red-button large-button'
+      %span No results found.
+
+- else
+  .summary
+    %span Showing #{@schools.size} #{'result'.pluralize(@schools.size)} for '#{schools_query}'
+    = paginate @schools
+  %ul
+    - schools.each do |school|
+      %li
+        = render 'list_item', school: school
+  .summary.last
+    = paginate @schools

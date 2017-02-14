@@ -1,0 +1,25 @@
+body.campaigns {
+  footer {
+    margin-top: 0;
+  }
+}
+
+body.campaigns #main {
+  .admin {
+    @extend .form-actions;
+
+    form {
+      display: inline-block;
+    }
+  }
+
+  .form-actions {
+    .input {
+      display: inline-block;
+
+      &.boolean {
+        margin: 0 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.product-selection-header
+  = link_to '#', class: 'product-selection-button' do
+    %span.counter
+      %span#item_count.item-count
+        = @shopping_cart.items.size
+      %span.close-cart.icon &#xf010;
+    Products Selected
+  .pull-right.funding-needed
+    Order Total:
+    %h2.funding-amount
+      %span#cart_subtotal= number_to_currency(@shopping_cart.order_total)
+%ul.products.cart_items.product-fields
+  - @shopping_cart.items.each do |item|
+    = render 'cart_items/item', item: item
+
+%ul.products
+  - Product.in_catalog.order(:name).each do |product|
+    %li
+      %a.product-preview{href: '#', data: { product_id: product.id } }
+        = image_tag(product.variants.default.first.image.small)
+        %h6 #{product.name}
+      .product-group{ id: "product_group_#{product.id}" }
+
+        .input.select.product_configuration
+          = label_tag "product_#{product.id}_configuration", "Configuraton:", class: 'h6'
+          = select_tag "product_#{product.id}_configuration", options_from_collection_for_select(product.variants, :id, :configuration, product.variants.default.first.id.to_s), class: "variant_selector"
+
+        %ul.variant_fields
+          - product.variants.each do |variant|
+            %li{ id: "item_variant_#{variant.id}" }
+              = render 'cart_items/form', shopping_cart: @shopping_cart, item: @shopping_cart.items.new(product_variant_id: variant.id, product_color_id: 1)
+

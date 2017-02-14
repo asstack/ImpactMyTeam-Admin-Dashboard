@@ -1,0 +1,146 @@
+body.schools #main {
+  #school_search_remote {
+    .search-query {
+      width: 100%;
+    }
+  }
+}
+
+#school-list {
+  .summary {
+    border-bottom: 1px solid #b4b4b4;
+    color: #b4b4b4;
+    overflow: auto;
+    padding: 24px 0;
+    width: 100%;
+
+    &.last { border: none; }
+
+    & > span {
+      display: inline-block;
+      height: 34px;
+      padding: 8px 0;
+    }
+  }
+
+  [class$="-button"] {
+    font-weight: 600;
+  }
+
+  .list_item {
+    border-bottom: 1px solid #b4b4b4;
+    display:block;
+    padding: 32px 0;
+
+    h3 {
+      color: #555;
+
+      a {
+        color: #555;
+      }
+    }
+
+    .actions {
+      float: right;
+
+      li {
+        display: inline-block;
+        margin-left: 8px;
+      }
+    }
+
+    .campaigns {
+      margin-left: 8px;
+      padding: 20px 0 0;
+      vertical-align: top;
+
+      li {
+        display: inline-block;
+        margin-left: 8px;
+        width: 30%;
+      }
+
+      .campaign {
+        background-color: #f4f4f4;
+        border: 0;
+        border-radius: 4px;
+        box-shadow: 0 0 4px rgba(0,0,0,.35);
+        color: #555;
+        display: block;
+        padding: 7px;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+
+        &.pending {
+            &:before, &:after {
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+            &:before {
+              color: #fff;
+              content: '?';
+              padding: 2px 3px;
+              z-index: 1;
+            }
+
+            &:after {
+              border: 15px solid $yellow;
+              border-left: 15px solid transparent;
+              border-bottom: 15px solid transparent;
+              content: '';
+              width: 10px;
+            }
+        }
+
+        .title {
+          display: inline-block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+          white-space: nowrap;
+
+          a {
+            color: #555;
+            font-weight: 600;
+            &:visited { color: #5e5e5e; }
+          }
+        }
+      }
+    }
+
+    .campaign-progress-bar {
+      height: 8px;
+      margin: 5px 0;
+
+      .campaign-bar-funded {
+        height: 8px;
+        background-color: $green;
+        border-radius: 4px;
+      }
+    }
+
+    ul.status {
+      width: 100%;
+      color: #5e5e5e;
+      text-align: center;
+
+      li {
+        @extend %league-gothic;
+        margin: 0;
+        width: auto;
+        vertical-align: top;
+
+        &:first-of-type {
+          float: left;
+        }
+
+        &:last-of-type {
+          float: right;
+        }
+      }
+    }
+
+  }
+}

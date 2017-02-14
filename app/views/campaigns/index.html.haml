@@ -1,0 +1,27 @@
+%h1 Listing campaigns
+
+%table
+  %tr
+    %th Title
+    %th End date
+    %th Summary
+    %th Twitter username
+    %th Facebook url
+    %th
+    %th
+    %th
+
+  - @campaigns.each do |campaign|
+    %tr
+      %td= campaign.title
+      %td= campaign.end_date
+      %td= campaign.summary
+      %td= campaign.twitter_username
+      %td= campaign.facebook_url
+      %td= link_to 'Show', campaign
+      %td= link_to 'Edit', edit_campaign_path(campaign)
+      %td= link_to 'Destroy', campaign, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Campaign', new_school_campaign_path(@school)

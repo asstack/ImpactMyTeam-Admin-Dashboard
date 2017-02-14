@@ -1,0 +1,58 @@
+= simple_form_for [shopping_cart, item], remote: true, namespace: dom_id(item, "variant_#{item.product_variant_id}") do |f|
+  = f.error_notification
+  .cart_item
+    = f.association :product_variant, as: :hidden
+    %h6= f.object.product_variant.name
+    .pull-left.product-options
+      .media
+        .img
+          - if f.object.new_record?
+            = image_tag(f.object.product_variant.image.small)
+          - else
+            = image_tag(f.object.image.small)
+        .media-body
+          %p= f.object.product_summary
+      .col
+        %h6.product-option-label
+          Starting Price
+          %span= number_to_currency(f.object.price)
+
+        - unless f.object.color_options.empty?
+          =# f.association :product_color, as: :radio_buttons, collection: f.object.color_options.collect(&:product_color), wrapper_class: 'colors'
+          = f.input :product_color, as: :radio_buttons, wrapper_class: 'colors' do
+            - f.collection_radio_buttons :product_color_id, f.object.color_options.collect(&:product_color).sort_by(&:hex), :id, :name do |b|
+              - color = b.object
+              - color_option = f.object.color_options.with_color(color).first
+
+              = content_tag(:div, class: "radio #{color.name.parameterize}", data: { color_hex: '#' + color.hex, image_url: (color_option.nil? ? '' : color_option.image.small.url) }) do
+                - out =  b.radio_button(class: 'radio_buttons optional') + b.label(class: 'collection_radio_buttons')
+                - out << content_tag(:abbr, '$', title: 'Call for custom pricing.') if color.name == 'Custom'
+                = out
+      .col
+        - f.object.accessory_options.each do |option|
+          %span.h6.product-option-label= option.accessory.name
+          - if option.exclusive?
+            = f.association :accessories, as: :radio_buttons, include_blank: "None", collection: option.accessory.variants, label: false, label_method: lambda { |variant| [variant.configuration, variant.price].join(' - ') }
+          - else
+            = f.association :accessories, as: :check_boxes, collection: option.accessory.variants, label: false, label_method: lambda { |variant| [variant.configuration, number_to_currency(variant.price)].join(' - ') }
+
+        - if f.object.allow_custom_graphic?
+          .add-photos-button.black-button.standard-button{title: "Upload vector artwork of the custom logo you would like on your new #{f.object.name}. Allowed file extensions are .ai, .eps, .cdr, .svg"}
+            Add High Res Logo - #{number_to_currency(f.object.custom_graphic_price)}
+            = f.input :custom_graphic, label: false
+          = f.input :custom_graphic_cache, as: :hidden
+          = f.input :remove_custom_graphic, as: :boolean if f.object.custom_graphic?
+          = link_to "Download #{File.basename(f.object.custom_graphic.path)}", f.object.custom_graphic.url, target: :blank if f.object.custom_graphic?
+
+    .pull-right.product-actions
+      = f.input :quantity, input_html: { min: 0, step: 1 }, label: 'QTY'
+      %h3.product-total
+        %span
+          Total:
+        = number_to_currency(f.object.price)
+
+      - if f.object.new_record?
+        = f.button :submit, 'Add to Cart', class: 'add-item red-button'
+      - else
+        = f.button :submit, 'Update Item', class: 'update-item red-button'
+        = link_to 'Remove', [shopping_cart, item], remote: true, method: :delete, confirm: 'Are you sure?', class: 'remove-item black-button'

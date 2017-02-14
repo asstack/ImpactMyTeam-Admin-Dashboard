@@ -1,0 +1,52 @@
+.cart_items {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    z-index: 1;
+    @include perspective(800);
+    @include apply-origin(50% 0%, true);
+    @include transition(opacity 0.25s cubic-bezier(0.6, 0, 0.4, 1));
+
+    &.active {
+        @include animation(rotateDown 0.25s cubic-bezier(0.6, 0, 0.4, 1));
+        box-shadow: -4px 0 4px rgba(0,0,0,.25);
+        opacity: 1;
+        pointer-events: auto;
+        position: relative;
+
+        & + .products {
+            background-color: rgba(#000, 0.4);
+
+            li {
+                opacity: 0.1
+            }
+        }
+    }
+
+    .product-image {
+        float: left;
+        margin: 20px;
+    }
+}
+
+@-webkit-keyframes rotateDown {
+    0% {
+        -webkit-transform: rotateX(30deg);
+    }
+
+    100% {
+        -webkit-transform: rotateX(0);
+    }
+}
+
+@keyframes rotateDown {
+    0% {
+        transform: rotateX(30deg);
+    }
+
+    100% {
+        transform: rotateX(0);
+    }
+}

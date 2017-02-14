@@ -1,0 +1,109 @@
+.registration .inner-container {
+    width: 576px;
+}
+
+.already-section {
+    border-bottom: 1px solid #bebebe;
+    overflow: auto;
+    margin-top: 32px;
+    padding-bottom: 32px;
+
+    p {
+        color: #5a5a5a;
+        margin-top: 8px;
+    }
+}
+
+.registration-form {
+
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    h1 {
+        color: $red;
+        margin-top: 32px;
+    }
+
+    p {
+        color: #bebebe;
+    }
+
+    h1, p {
+        text-align: center;
+    }
+
+    form {
+        margin-top: 32px;
+    }
+
+    .input {
+        display: inline-block;
+        margin: 0 0 15px 17px;
+        width: 48%;
+
+        &:nth-child(even) {
+            margin-left: 0;
+        }
+
+        input {
+            width: 100%;
+        }
+    }
+
+    .field_with_errors {
+
+        &:nth-child(odd) {
+            margin: 0 17px 15px 0;
+        }
+    }
+}
+
+.registration-label {
+    color: #5a5a5a;
+    display: block;
+    font-weight: 600;
+    margin: 32px 0 20px;
+}
+
+/* ====================================
+    Login Form
+======================================= */
+
+.login-form {
+    @extend .registration-form;
+
+    h1 {
+        color: #5a5a5a;
+    }
+
+    form {
+        margin-top: 32px;
+    }
+
+    input[type='checkbox'] {
+        width: 24px;
+    }
+}
+
+/* ====================================
+    Edit Registration
+======================================= */
+
+.edit-registration {
+    clear: both;
+    padding-bottom: 75px;
+
+    &:after {
+        clear: both;
+        content: '';
+        display: table;
+    }
+
+    .password {
+        margin-left: 0;
+        width: 100%;
+    }
+}

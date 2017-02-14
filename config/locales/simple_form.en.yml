@@ -1,0 +1,85 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    # Labels and hints examples
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+    labels:
+      donation:
+        amount_authorized: '$'
+    placeholders:
+      user:
+        email: 'Email'
+        password: 'Password'
+        first_name: 'First Name'
+        last_name: 'Last Name'
+        phone_number: 'Your Phone'
+        password: 'Password'
+        password_confirmation: 'Re-type Password'
+        current_password: 'Current Password'
+      campaign:
+        title: 'Title of your campaign'
+        twitter_username: 'Twitter Handle (Optional)'
+        facebook_url: 'Facebook Page (Optional)'
+        summary: 'Describe your campaign'
+      donation:
+        amount_authorized: '$ 0.00'
+        card_number: 'Card Number'
+        card_expires_on: 'Expiration'
+        card_verification: 'CVV'
+        first_name: 'First Name'
+        last_name: 'Last Name'
+        email: 'Email'
+        phone: 'Phone'
+        billing_address1: 'Billing Address Line 1'
+        billing_address2: 'Billing Address Line 2'
+        billing_city: 'City'
+        billing_state: 'State/Province'
+        billing_zip: 'Zip/Postal Code'
+        billing_country: 'Country'
+      school:
+        name: 'Name'
+        city: 'City'
+        region: 'State/Province'
+        website_url: 'School Website'
+        athletics_url: 'Athletics Website'
+        addresses:
+          phone_number: 'Phone Number'
+          line_1: 'Address Line 1'
+          line_2: 'Address Line 2'
+          city: 'City'
+          region: 'State/Province'
+          postal_code: 'Zip/Postal Code'
+          country: 'Country'
+        contacts:
+          first_name: 'First Name'
+          last_name: 'Last Name'
+          email: 'Email'
+          phone_number: 'Phone Number'
+
+    labels:
+      campaign:
+        twitter_username: '&#xf004;'
+        facebook_url: '&#xf005;'
+
+  helpers:
+    submit:
+      donation:
+        create: "Make %{model}"

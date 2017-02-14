@@ -1,0 +1,11 @@
+@mixin rem($val) {
+    font-size: ($val * 16) + px;
+    font-size: $val + rem;
+}
+
+@mixin animation($content) {
+    -webkit-animation: $content;
+       -moz-animation: $content;
+         -o-animation: $content;
+            animation: $content;
+}

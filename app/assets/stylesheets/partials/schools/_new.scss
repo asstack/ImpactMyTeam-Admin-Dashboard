@@ -1,0 +1,94 @@
+body.schools.new {
+    h1 {
+        color: $red;
+        text-align: center;
+    }
+
+    .h6 {
+        color: #bebebe;
+        margin-bottom: 23px;
+        text-align: center;
+    }
+
+    .main form {
+        margin: 0 auto;
+        width: 674px;
+    }
+
+    .input {
+        display: inline-block;
+        margin-bottom: 18px;
+        vertical-align: top;
+
+        input:not(.radio_buttons) {
+            width: 100%;
+        }
+    }
+
+    .school_name, .school_contacts_email {
+        width: 100%;
+    }
+
+    .school_city, .school_region, .school_addresses_city, .school_addresses_region, .school_addresses_postal_code {
+        width: 150px;
+
+        input {
+            padding-left: 10px;
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .school_school_type, .school_school_level {
+        min-width: 150px;
+    }
+
+    .school_website_url, .school_athletics_url, .school_addresses_phone_number, .school_addresses_line_1, .school_addresses_line_2, .school_addresses_city, .school_contacts_first_name, .school_contacts_last_name, .school_contacts_phone_number {
+        width: 324px;
+    }
+
+    .school_addresses_country .chosen-container, .school_contacts_contact_type .chosen-container {
+        min-width: 324px;
+    }
+
+    .school_athletics_url, .school_region, .school_school_type, .school_school_level, .school_addresses_line_2, .school_addresses_region, .school_addresses_postal_code, .school_addresses_country .chosen-container, .school_contacts_last_name, .school_contacts_contact_type {
+        margin-left: 20px;
+    }
+
+    .chosen-container {
+        min-width: 150px;
+    }
+
+    .affiliation {
+        div.radio_buttons {
+            margin: 10px 0 15px;
+
+            .control-label {
+                color: #bebebe;
+                display: block;
+                margin-bottom: 0;
+            }
+
+            label {
+                color: #323232;
+                font-weight: 600;
+            }
+
+            .radio {
+                width: 30%;
+            }
+        }
+    }
+
+    .form-actions {
+        .inner-container {
+            width: 674px;
+        }
+    }
+
+    footer {
+        margin-top: -8px;
+    }
+}

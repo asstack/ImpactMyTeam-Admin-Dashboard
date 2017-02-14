@@ -1,0 +1,29 @@
+= simple_form_for [@campaign, @donation] do |f|
+  = f.error_notification
+  = f.error :base
+
+  .form-inputs
+    = f.input :amount_authorized, input_html: { value: number_with_precision(f.object.amount_authorized, precision: 2), min: 0.00, step: 0.01 }, label: false
+    = f.input :card_number, label: false
+    = f.input :card_verification, label: false
+    = f.input :card_brand, as: :select, collection: Donation.accepted_card_brands, prompt: 'Select Card Type', label: false, input_html: { class: 'chzn-select' }
+    = f.input :card_expires_on, discard_day: true, start_year: Date.today.year, end_year: (Date.today.year+10), add_month_numbers: true, label: false, prompt: { month: 'Exp. Month', year: 'Exp. Year' }, input_html: { class: 'chzn-select' }
+
+    = f.input :first_name, label: false
+    = f.input :last_name, label: false
+    = f.input :email, label: false
+    = f.input :phone, label: false
+
+    = f.input :billing_address1, label: false
+    = f.input :billing_address2, label: false
+    = f.input :billing_city, label: false
+    = f.input :billing_state, label: false
+    = f.input :billing_zip, label: false
+    = f.input :billing_country, label: false, priority: ["United States"], input_html: { class: 'chzn-select' }
+
+  .form-actions
+    .inner-container
+      = link_to 'Cancel', @campaign, class: 'black-button'
+      .pull-right
+        = f.input :terms_of_service, as: :boolean, required: true, label: "I have read and agree to the #{link_to('terms of service', page_path('terms-of-use'), target: '_blank')}".html_safe
+        = f.button :submit, class: 'large-button'

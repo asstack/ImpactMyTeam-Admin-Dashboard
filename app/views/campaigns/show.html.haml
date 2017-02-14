@@ -1,0 +1,75 @@
+- if campaign.active? || campaign.closed?
+  .pull-right
+    = twitter_button(campaign)
+    = facebook_share_button(campaign)
+- else
+  %h6.pull-right Preview
+
+%h6.campaign-header Campaign for #{link_to campaign.school.name, campaign.school}
+
+.campaign
+  .school-images-container
+    .school-logo-container
+      .school-logo
+        = image_tag campaign.logo_image.figure.url
+    - unless campaign.campaign_photos.blank?
+      .school-images
+        #slides
+          - campaign.campaign_photos.each do |photo|
+            .slide
+              = link_to photo.image.url, rel: :lazybox do
+                = image_tag photo.image.figure
+          - if campaign.campaign_photos.count > 1
+            = link_to '&#xf011;'.html_safe, '#', class: 'slidesjs-previous slidesjs-navigation icon'
+            = link_to '&#xf012;'.html_safe, '#', class: 'slidesjs-next slidesjs-navigation icon'
+
+  %h3 #{campaign.title}
+  = render 'donation_progress'
+  .campaign-details
+    %p= campaign.summary
+
+- if campaign.shopping_cart
+  #product-selection.product-selection
+    .product-selection-header
+      %p.h6.pull-left You will help your school get this equipment.
+      .pull-right.funding-needed
+        Order Total:
+        %h2.funding-amount
+          %span#cart_subtotal= number_to_currency(campaign.shopping_cart.order_total)
+    %ul.products
+      - campaign.shopping_cart.items.each do |item|
+        %li
+          %a.product-preview{href: '#', data: {id: dom_id(item, :item_preview) }}
+            = image_tag(item.image.small)
+            %span#item_count.item-count.counter= item.quantity
+          .product-group
+            %h6 #{item.product_variant.name}
+            %p= item.product.summary
+            - unless item.accessories.empty?
+              .item-accessories
+                %h6 Accessories
+                %ul
+                  - item.accessories.each do |a|
+                    %li= a.name
+
+- if user_signed_in?
+  .admin
+    .inner-container
+      - if can? :update, campaign
+        = link_to 'Edit', edit_campaign_path(campaign), class: 'red-button'
+
+      - if admin_user_signed_in?
+        = link_to 'Admin', admin_campaign_path(campaign), class: 'red-button'
+
+      - if can?(:reject, campaign)
+        = status_transition_button :reject, campaign
+      - elsif can?(:cancel, campaign)
+        = status_transition_button :cancel, campaign
+
+      .pull-right
+        - if can?(:approve, campaign)
+          = status_transition_button :approve, campaign
+        - elsif can?(:submit, campaign) && !campaign.awaiting_approval?
+          = status_transition_button :submit, campaign, 'Submit for Approval'
+        - elsif can?(:activate, campaign) && campaign.pending_activation?
+          = status_transition_button :activate, campaign, 'Activate Campaign'

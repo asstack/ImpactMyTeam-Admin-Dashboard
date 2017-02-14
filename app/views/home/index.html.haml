@@ -1,0 +1,17 @@
+.home-call-action
+  .inner-container
+    %h1= t('impact.home.title')
+    %p.h6= t('impact.home.summary.crowdfunding')
+    .start-campaign#start-campaign-home
+      = school_search_form button: { text: t('impact.campaign.start') }
+.main-body.home-body
+  = image_tag('home-equipment.png', alt: t('impact.home.summary.equipment_collection'), class: 'home-equipment')
+  %h4= t('impact.home.summary.products')
+  .home-break
+  .inner-container.column-2.home-bottom-links
+    = link_to page_path('success-stories'), class: 'column' do
+      = image_tag('success-stories.jpg', alt: t('impact.pages.success_stories.title'))
+      %h5= t('impact.pages.success_stories.title')
+    = link_to page_path('about'), class: 'column' do
+      = image_tag('what-is-fuel.jpg', alt: t('impact.pages.what_is_impact.title'))
+      %h5= t('impact.pages.what_is_impact.title')

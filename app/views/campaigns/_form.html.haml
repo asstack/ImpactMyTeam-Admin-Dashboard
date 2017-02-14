@@ -1,0 +1,41 @@
+.campaign
+  .school-images-container
+    = render "school_images_form"
+
+  = simple_form_for shallow_resources(@school, @campaign) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :school_team_id, as: :hidden
+      .section
+        = f.input :title, label: false
+        = f.input :duration_in_days, collection: %w(30 60 90), as: :radio_buttons
+        /= f.input :twitter_username, label_html: {class: 'twitter-label'}
+        /= f.input :facebook_url, label_html: {class: 'facebook-label'}
+      .section
+        = f.input :summary, label: false
+
+      - if user_signed_in? && !current_user.schools.include?(@campaign.school)
+        .section
+          = f.simple_fields_for :school_role do |saf|
+            = saf.input :name, as: :radio_buttons, collection: SchoolRole.role_mappings, label: 'School Affiliation'
+
+      #tax-exemption.section
+        .add-docs-button.black-button.standard-button
+          Upload Tax-Exemption Form
+          = f.simple_fields_for :shopping_cart do |cart_f|
+            = cart_f.input :tax_document
+
+    %noscript
+      = f.button :submit, 'Save and Preview', class: 'red-button'
+
+#product-selection.product-selection
+  = render 'shopping_carts/form'
+
+.form-actions
+  .inner-container
+    - if @campaign.unsaved?
+      = link_to 'Cancel', @campaign, method: :delete, class: 'cancel-button black-button large-button'
+    - else
+      = link_to 'Cancel', @campaign, class: 'cancel-button black-button large-button'
+    .pull-right
+      = link_to 'Save and Preview', '#', class: 'save_and_preview red-button large-button', data: { form_id: dom_id(@campaign, :edit) }

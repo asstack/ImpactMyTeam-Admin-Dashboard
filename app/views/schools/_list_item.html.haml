@@ -1,0 +1,19 @@
+- active_campaigns = school.campaigns.active
+- accessible_campaigns = school.campaigns.accessible_by(current_ability)
+
+.list_item{ id: dom_id(school) }
+  %ul.actions
+    - if active_campaigns.empty?
+      %li.empty No active campaigns.
+    - if accessible_campaigns.count > [active_campaigns.count, 3].min
+      %li= link_to 'View More', school, class: 'black-button small-button'
+    %li= link_to t('impact.campaign.new'), [:new, school, :campaign], class: 'green-button small-button'
+
+  %h3= link_to school.name, school
+  .location= school.location
+
+  - unless school.campaigns.active.empty?
+    = render 'list_item_campaigns', campaigns: school.campaigns.with_status(:active).limit(3)
+
+  - if user_signed_in? && !school.campaigns.pending.created_by(current_user).empty?
+    = render 'list_item_campaigns', campaigns: school.campaigns.pending.created_by(current_user).limit(3)

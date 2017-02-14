@@ -1,0 +1,265 @@
+fieldset {
+    padding: 10px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+input, textarea {
+    @include background-image(linear-gradient(top, rgba(0,0,0,.04), rgba(255,255,255,.04)));
+    border-radius: 4px;
+    border: 0;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,.35);
+    color: #bebebe;
+    height: 48px;
+    @include transition (all 0.6s ease);
+
+    &:focus {
+        border: 1px solid #808080;
+        color: #5a5a5a;
+        outline: 0;
+    }
+}
+
+input.string, input.numeric, input.password, input[type='text'], textarea {
+    padding-left: 16px;
+}
+
+.check_boxes .checkbox, .radio_buttons .radio {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+input[type='checkbox'], input[type="radio"] {
+    @include appearance(none);
+    cursor: pointer;
+    height: 24px;
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    position: relative;
+    top: 8px;
+    width: 24px;
+    z-index: 1;
+
+    & + label {
+        color: #767676;
+        display: inline-block;
+        @include rem(0.875);
+        height: 24px;
+        line-height: 24px;
+        margin-bottom: 6px;
+        padding-left:  12px;
+
+        &:before, &:after {
+            position: absolute;
+        }
+
+        &:before {
+            @include background-image(linear-gradient(top, rgba(0,0,0,.04), rgba(255,255,255,.04)));
+            border-radius: 3px;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,.35);
+            content: '';
+            height: 24px;
+            left: 0;
+            width: 24px;
+            @include transition (all 0.6s ease);
+        }
+
+        &:after {
+            color: $red;
+            content: '\f001';
+            font-family: 'Icons';
+            @include rem(1);
+            opacity: 0;
+            left: 3px;
+        }
+    }
+
+    &:checked + label:after {
+        opacity: 1;
+    }
+}
+
+input[type="radio"] {
+
+    & + label {
+        padding-left: 5px;
+
+        &:before {
+            border-radius: 50%;
+        }
+
+        &:after {
+            background-color: $red;
+            border-radius: 50%;
+            content: '';
+            height: 20px;
+            left: 2px;
+            top: 9px;
+            width: 20px;
+        }
+    }
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+textarea {
+    height: auto;
+}
+
+input.search-query {
+    padding-left: 30px;
+    position: relative;
+    margin-right: 7px;
+    width: 400px;
+
+    &:before {
+        content: '\f000';
+        font-family: 'Icons';
+        @include rem(1);
+        left: 10px;
+        margin-top: -10px;
+        position: absolute;
+        top: 50%;
+    }
+}
+
+.input {
+    position: relative;
+}
+
+.field_with_errors {
+    input {
+        border: 1px solid $red;
+    }
+
+    .error {
+        border-radius: 4px;
+        color: transparent;
+        cursor: pointer;
+        display: inline-block;
+        left: 90%;
+        min-width: 150px;
+        padding: 10px 10px;
+        position: absolute;
+        top: -35px;
+        text: {
+            align: center;
+            transform: capitalize;
+        }
+        @include transition(all 0.6s);
+
+        &:after {
+            background-color: $red;
+            border-radius: 50%;
+            color: #fff;
+            content: '!';
+            font-weight: 600;
+            left: -5%;
+            position: absolute;
+            padding: 5px 10px;
+            top: 45px;
+            z-index: 3;
+        }
+
+        &:hover {
+            background-color: $red;
+            color: #fff;
+            z-index: 4;
+        }
+    }
+}
+
+.boolean.field_with_errors {
+    padding-right: 40px;
+}
+
+.alert-error {
+    color: $red;
+    margin-bottom: 15px;
+}
+
+.field_with_hint {
+    position: relative;
+
+    .hint {
+        border-radius: 4px;
+        color: transparent;
+        cursor: pointer;
+        display: inline-block;
+        left: 93%;
+        min-width: 270px;
+        padding: 10px 15px;
+        position: absolute;
+        top: -52px;
+        @include transition(all 0.6s);
+
+        &:after {
+            background-color: $green;
+            border-radius: 50%;
+            color: #fff;
+            content: '!';
+            font-weight: 600;
+            left: 0;
+            position: absolute;
+            padding: 5px 10px;
+            top: 64px;
+            z-index: 3;
+        }
+
+        &:hover {
+            background-color: $green;
+            color: #fff;
+            z-index: 4;
+        }
+    }
+}
+
+.input-append {
+    display: inline-block;
+
+    .input, input {
+        display: inline-block;
+        vertical-align: middle;
+        label {
+            display: none;
+        }
+    }
+
+    input[type='submit'] {
+        @extend %black-button;
+        @extend %x-small-button;
+        border-radius: 0 4px 4px 0;
+        margin: 0;
+    }
+
+    .input {
+        margin-right: -10px;
+        width: 100px;
+        input[type='number'], input[type='text'] {
+            border-radius: 4px 0 0 4px;
+            height: auto;
+            line-height: 1;
+            margin: 0;
+            padding: 6px 8px;
+            width: 100%;
+        }
+    }
+}
+
+.form-actions {
+    background-color: #fff;
+    box-shadow: 0 -2px 4px rgba(#000, 0.1);
+    height: 96px;
+    left: 0;
+    padding: 24px 8%;
+    margin-top: 20px;
+    min-width: 1200px;
+    position: absolute;
+    width: 100%;
+}

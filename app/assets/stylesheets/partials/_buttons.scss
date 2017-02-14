@@ -1,0 +1,303 @@
+%button {
+  @include background-image(linear-gradient(bottom, rgba(0,0,0,.12), rgba(255,255,255,.12)));
+  @include transition(all 0.6s);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.12);
+  color: #fff;
+  display: inline-block;
+  font-weight: 600;
+  text-shadow: 0 -1px rgba(0,0,0,0.20);
+  text-transform: capitalize;
+}
+
+%small-button {
+  font-weight: 400;
+  height: auto;
+  line-height: 1;
+  padding: 8px 26px;
+}
+
+%x-small-button {
+  @extend %small-button;
+  font-size: 14px;
+  height: auto;
+  line-height: 1;
+  padding: 8px 13px;
+}
+
+%page-button {
+  @extend %small-button;
+  font-weight: normal;
+  min-height: 34px;
+  min-width: 34px;
+  padding: 8px;
+  text-align: center;
+  alignment-baseline: middle;
+}
+
+%tight-button {
+  @extend %small-button;
+  font-weight: normal;
+  padding: 4px 8px;
+}
+
+%standard-button {
+  height: 48px;
+  line-height: 48px;
+  padding: 0 33px;
+}
+
+%large-button {
+  height: 48px;
+  line-height: 48px;
+  padding: 0 60px;
+}
+
+%red-button {
+  @extend %button;
+  background-color: #fa4040;
+
+  &:hover {
+    background-color: #ff5252;
+  }
+
+  &:active {
+    background-color: #e02424;
+  }
+}
+
+%black-button {
+  @extend %button;
+  background-color: #5a5a5a;
+
+  &:hover {
+    background-color: #666;
+  }
+
+  &:active {
+    background-color: #4e4e4e;
+  }
+}
+
+%silver-button {
+  @extend %button;
+  background-color: #fbfbfb;
+  color: #666;
+  text-shadow: 0 -1px #fff;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  &:active {
+    background-color: #e0e0e0;
+  }
+}
+
+%green-button {
+  @extend %button;
+  background-color: #9ebd58;
+
+  &:hover {
+    background-color: #aac965;
+  }
+
+  &:active {
+    background-color: #9ebd58;
+  }
+}
+
+%yellow-button {
+  @extend %button;
+  background-image: none;
+  background-color: $yellow;
+  box-shadow: none;
+  text-shadow: none;
+
+  &:hover {
+    background-color: #f3c433;
+  }
+
+  &:active {
+    background-color: #e0b52f;
+  }
+}
+
+.red-button {
+  @extend %red-button;
+  @extend %standard-button;
+}
+
+.green-button {
+  @extend %green-button;
+  @extend %standard-button;
+}
+
+.black-button {
+  @extend %black-button;
+  @extend %standard-button;
+}
+
+.silver-button {
+  @extend %silver-button;
+  @extend %standard-button;
+}
+
+.yellow-button {
+  @extend %yellow-button;
+  @extend %standard-button;
+}
+
+.red-button, .green-button, .black-button, .silver-button {
+  &.small-button {
+    @extend %small-button;
+  }
+  &.tight-button {
+    @extend %tight-button;
+  }
+  &.x-small-button {
+    @extend %x-small-button;
+  }
+
+}
+
+.x-small-button {
+  @extend %x-small-button;
+}
+
+.small-button {
+  @extend %small-button;
+}
+
+.button {
+  @extend %standard-button;
+}
+
+.large-button {
+  @extend %large-button;
+}
+
+.btn {
+  @extend %red-button;
+}
+
+.pagination {
+  @extend %league-gothic;
+  display: inline-block; // 21
+  @include rem(1.3125);
+  float: right;
+
+  .page a, .next a, .prev a, .last a, .first a, .page.current {
+    line-height: 1.25;
+    padding-bottom: 0;
+  }
+
+  .page a {
+    @extend %page-button;
+    @extend %silver-button;
+  }
+
+  .next a, .prev a, .last a, .first a {
+    @extend %silver-button;
+    @extend %small-button;
+  }
+  .page.current {
+    @extend %page-button;
+    @extend %black-button;
+  }
+}
+
+.product-selection-button {
+  @extend %button;
+  background-color: #414141;
+  border: 1px solid #000;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 22px 0 22px;
+
+  &:hover {
+    @include background-image(linear-gradient(bottom, rgba(0,0,0,0), rgba(255,255,255,0)));
+  }
+
+  &:active {
+    @include background-image(linear-gradient(top, rgba(0,0,0,.4), rgba(0,0,0,.12)));
+  }
+}
+
+.add-photos-button {
+  display: block;
+  @include rem(0.875);
+  height: 33px;
+  line-height: 30px;
+  margin: 15px auto;
+  padding: 0 13px;
+  position: relative;
+  width: 220px;
+
+  &:before {
+    content: '\f006';
+    font-family: 'Icons';
+    @include rem(1);
+    font-weight: 400;
+    margin-right: 7px;
+    position: relative;
+    top: 2px;
+  }
+  .input {
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+
+    &, input[type=file] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.add-docs-button {
+  @extend .add-photos-button;
+  margin-left: 0;
+  width: 260px;
+
+  &:before {
+    content: '\f013';
+  }
+}
+
+.cart_item {
+  .add-photos-button {
+    width: 260px;
+  }
+}
+
+.fb-share {
+  @extend %small-button;
+  @extend %button;
+  background-color: #3b5997;
+  @include rem(0.8125);
+  font-weight: 600;
+  padding: 7px 20px 7px 28px;
+  position: relative;
+  vertical-align: top;
+
+  &:before {
+    content: '\f005';
+    font-family: 'Icons';
+    @include rem(1);
+    left: 12px;
+    position: absolute;
+    top: 4px;
+  }
+
+  &:hover {
+    background-color: #4467af;
+  }
+
+  &:active {
+    background-color: #2d4474;
+  }
+}

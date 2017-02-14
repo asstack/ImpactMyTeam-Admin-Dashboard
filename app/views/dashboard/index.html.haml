@@ -1,0 +1,24 @@
+.filters
+  %h5 Filter
+  = link_to 'All', dashboard_path, class: "#{params[:status].blank? ? 'green-button' : 'black-button'} tight-button"
+  - Campaign.state_machine(:status).states.each do |status|
+    - current_selection = (params[:status] == status.name.to_s)
+    = link_to status.human_name.titleize, dashboard_path(status: status.name), class: "#{current_selection ? 'green-button' : 'black-button'} tight-button"
+
+%h3 Managed Campaigns
+.campaign-figures
+  - unless other_campaigns.empty?
+    - other_campaigns.each do |campaign|
+      = render 'campaigns/figure', campaign: campaign
+
+%h3 Your Campaigns
+.campaign-figures
+  %figure.campaign-figure.start-campaign-figure
+    .campaign-figure-img
+    %figcaption
+      .caption-copy
+      = link_to t('impact.campaign.start'), schools_path, {:class => 'large-button black-button'}
+
+  - user_campaigns.each do |campaign|
+    = render 'campaigns/figure', campaign: campaign
+

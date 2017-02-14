@@ -1,0 +1,3 @@
+$('ul.cart_items li.active').fadeOut();
+$('.product-selection-header span#item_count').html('<%= @shopping_cart.items.size %>');
+$('#cart_subtotal').html('<%= number_to_currency(@shopping_cart.order_total) %>')

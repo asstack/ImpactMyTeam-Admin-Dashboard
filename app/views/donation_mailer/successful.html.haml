@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", :http_equiv => 'Content-Type'}
+
+  %body
+    %p Hello, #{@donation.donor_name},
+
+    %p Thank you for donating to #{@school.name}'s campaign: #{@campaign.title}!
+
+    %p Your donation of #{number_to_currency(@donation.amount_authorized)} was successful!
+
+    %p Please retain this email receipt for your records.
+
+    %ul
+      %li School: #{@school.name} (#{link_to school_url(@school), school_url(@school)})
+      %li Campaign: #{@campaign.title} (#{link_to campaign_url(@school), campaign_url(@school)})
+    %pre
+      = preserve do
+        = @donation.receipt
+
+

@@ -1,0 +1,8 @@
+.registration
+  .already-section.inner-container
+    %p.pull-left Don't have an account yet?
+    = link_to 'Register', new_user_registration_path, class: 'black-button small-button pull-right'
+  .login-form.inner-container
+    %h1= t('impact.title')
+    %p.h6 Returning Users Login
+    = render "devise/sessions/login_form"

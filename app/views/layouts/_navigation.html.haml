@@ -1,0 +1,28 @@
+.inner-container
+  = link_to image_tag('ia-logo.png', alt: t('impact.company')), root_path, :class => 'brand'
+  %ul.nav.pull-right
+    %li.search-form
+      = school_search_form id: 'school_search_header', button: { text: '&#xf000;'.html_safe, class: 'icon icon-search' }
+    - if user_signed_in?
+      %li.nav-logged-in#user-menu-tab
+        = link_to dashboard_path do
+          = current_user.name
+          %span.counter.nav-counter
+            = current_user.campaigns.size
+        %ul#user-menu.logged-in-popup
+          %li
+            = link_to dashboard_path do
+              Dashboard
+              %span.campaign-count Campaigns
+              %span.campaign-nav-counter.counter
+                = current_user.campaigns.size
+          - if admin_user_signed_in?
+            %li= link_to 'Admin', admin_root_path
+          %li= link_to 'Edit account', edit_user_registration_path
+          %li= link_to 'Logout', destroy_user_session_path, method: 'delete'
+    - else
+      %li.nav-login#user-menu-tab
+        = link_to 'Login', new_user_session_path
+        %ul
+          %li#user-menu.login-popup
+            = render "devise/sessions/nav_form"

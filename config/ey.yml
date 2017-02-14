@@ -1,0 +1,3 @@
+environments:
+  IYT_Production:
+    precompile_assets: true  # precompile assets when asset changes detected

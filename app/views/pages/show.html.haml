@@ -1,0 +1,11 @@
+%h1= @page.name
+
+= markdown(@page.content)
+
+- if @page.document_code?
+  %p
+    Last modified: #{@page.updated_at}
+    %br
+    = @page.document_code
+
+= link_to 'Home', root_path

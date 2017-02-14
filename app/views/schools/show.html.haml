@@ -1,0 +1,18 @@
+- if can? :update, school
+  .pull-right
+    = link_to 'Edit School', edit_school_path(school), class: 'red-button'
+%h1 #{school.name}
+.location
+  #{school.location}
+  -# %span.phone-number
+  -# just need phone numbers in place
+
+.campaign-figures
+  %figure.campaign-figure.start-campaign-figure
+    .campaign-figure-img
+    %figcaption
+      .caption-copy
+      = link_to t('impact.campaign.start'), new_school_campaign_path(school), {:class => 'large-button black-button'}
+
+  - campaigns.each do |campaign|
+    = render 'campaigns/figure', campaign: campaign

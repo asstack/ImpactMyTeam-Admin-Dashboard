@@ -1,0 +1,16 @@
+.goal-donation-container
+  .goal
+    #{campaign.donation_progress_message}
+  .donation-bar-container
+    %span#goal-amount{ data: { goal: campaign.shopping_cart.order_total, funded: campaign.collected_donations.total } }
+      #{campaign.goal_amount_usd}
+    .donation-bar-funded{style: "width: #{campaign.goal_progress * 100}%;"}
+      #{campaign.total_collected_amount_usd}
+    .donation-bar
+  #donation.donation
+    - if campaign.active?
+      = render 'donation_buttons'
+    - else
+      %p
+        %b Status:
+        = campaign.human_status_name

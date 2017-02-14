@@ -1,0 +1,7 @@
+%h1 Payment Form
+%p.h6 Fill out to pay
+
+- if ActiveMerchant::Billing::Base.test?
+  .info
+    This page is set up with a test gateway, and does not actually process transactions. The fields below are pre-populated with valid test values. Feel free to change them for testing purposes.
+= render 'form'

@@ -1,0 +1,38 @@
+body.pages.show #main {
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 20px 0;
+    line-height: normal;
+  }
+
+  h1 {
+    @include rem(3);
+  }
+
+  h2 {
+    @include rem(2);
+  }
+
+  h3 {
+    @include rem(1.5);
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+}

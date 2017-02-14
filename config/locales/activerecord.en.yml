@@ -1,0 +1,24 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  activerecord:
+    attributes:
+      school:
+        school_type: Type
+        school_level: Level
+        region: State/Province
+      school_address:
+        line_1: Street 1
+        line_2: Street 2
+        region: State/Province
+        postal_code: Zip/Postal Code
+      campaign:
+        duration_in_days: Length(days)
+        twitter_username: Twitter Handle
+        facebook_url: Facebook Page
+    state_machines:
+      states:
+        draft: 'Draft'
+      events:
+        submit: 'Submit for Approval'

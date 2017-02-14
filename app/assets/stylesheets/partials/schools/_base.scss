@@ -1,0 +1,19 @@
+.location {
+  color: #bebebe;
+
+  &:before {
+    content: '\f003';
+    font-family: 'Icons';
+    font-size: inherit;
+    padding-right: .5em;
+  }
+}
+
+.phone-number {
+    color: #bebebe;
+
+    &:before {
+        content: '\f002';
+        font-family: 'Icons';
+    }
+}

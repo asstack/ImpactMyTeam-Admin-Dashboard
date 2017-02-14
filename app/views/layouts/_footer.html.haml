@@ -1,0 +1,7 @@
+%ul.footer.inner-container
+  - %w(contact about terms-of-use privacy-policy guidelines agreement).each do |page|
+    %li= link_to page.titleize, page_path(page)
+  %li= link_to 'Twitter', 'http://www.twitter.com'
+  %li= link_to 'Facebook', 'http://www.facebook.com'
+  %li= link_to t('impact.company'), 'http://impact-athletic.com/'
+  %li.copyright &copy; #{Date.today.year} #{t('impact.title')}, Inc. All Rights Reserved

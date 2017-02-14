@@ -1,0 +1,65 @@
+/*
+ * This file just points to the app partials. Do
+ * not put any thing in this, since it could be over written by another css file.
+ *
+ * Whenever you create a new sass file you will need to add it here.  The reason is sass
+ *  reads the files in alphabetical order when you use an universal (*) selector. So we
+ *  explicitly name them to allow greater control of the order in which the sass files are called.
+ *
+ *= require_self
+ *= require lazybox
+ * require chosen
+ *
+*/
+
+// Compass requirements
+@import "compass/css3";
+@import "compass/reset";
+
+
+// Defaults that won't be changin'
+@import "defaults/variables";
+@import "defaults/mixins";
+@import "defaults/typography";
+
+// Common styles throughout the site
+// that don't quite fit in any of the partials
+@import "main";
+
+// Partials for repeated styles
+@import "partials/buttons";
+@import "partials/layout";
+@import "partials/helpers";
+@import "partials/nav";
+@import "chosen";
+@import "partials/chosen_base";
+@import "partials/chosen";
+@import "partials/forms";
+@import "partials/campaign-figure";
+@import "partials/notifications";
+@import "partials/footer";
+
+// Page partials
+@import "partials/home";
+@import "partials/campaigns/admin";
+@import "partials/campaigns/base";
+@import "partials/campaigns/booster";
+@import "partials/campaigns/show";
+
+@import "partials/shopping_carts/form";
+
+@import "partials/donations/base";
+
+@import "partials/schools/base";
+@import "partials/schools/search";
+@import "partials/schools/show";
+@import "partials/schools/new";
+
+@import "partials/registrations/new";
+
+@import "partials/pages";
+
+// IE you are special so you get your own separated
+// sass file!
+@import "partials/ie";
+

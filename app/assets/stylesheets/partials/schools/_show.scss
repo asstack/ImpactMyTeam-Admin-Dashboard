@@ -1,0 +1,26 @@
+body.schools.show {
+  .location, .phone-number {
+    &:before {
+      @include rem(2);
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: -10px;
+    }
+  }
+
+  .location {
+    border-bottom: 1px solid #b4b4b4;
+    @include rem(1.3125);
+    padding-bottom: 30px;
+  }
+
+  .phone-number {
+    margin-left: 20px;
+  }
+
+  .number-of-campaigns {
+    color: #bebebe;
+    font-weight: 600;
+    margin: 20px 0;
+  }
+}

@@ -1,0 +1,19 @@
+var placeholders = $('.school-images-upload ul li.uploading')
+
+<% if @photo.new_record? %>
+  if (placeholders.length > 0)
+    placeholders.first().remove();
+  alert('The image could not be uploaded.');
+<% else %>
+  <% photo_li = content_tag :li, id: dom_id(@photo), data: { delete_path: url_for(@photo) } do %>
+      <% image_tag @photo.image.thumb %>
+  <% end %>
+
+  if (placeholders.length > 0)
+    placeholders.first().fadeOut(function() {
+      $(this).replaceWith('<%= photo_li %>');
+    });
+
+  else
+    $('.school-images-upload ul').append('<%= photo_li %>');
+<% end %>

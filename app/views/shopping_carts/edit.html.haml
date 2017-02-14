@@ -1,0 +1,10 @@
+%h6
+  Editing Cart for
+  = link_to @shopping_cart.campaign.title, @shopping_cart.campaign
+
+#product-selection.product-selection
+  = render 'form'
+
+= link_to 'Show', @shopping_cart
+\|
+= link_to 'Back', campaign_path(@shopping_cart.campaign)

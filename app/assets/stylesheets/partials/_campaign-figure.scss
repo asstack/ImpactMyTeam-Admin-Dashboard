@@ -1,0 +1,149 @@
+.campaign-figures {
+  padding: 30px 0;
+}
+
+.campaign-figure {
+    background-color: #f4f4f4;
+    box-shadow: 0 0 4px rgba(0,0,0,.35);
+    display: inline-block;
+    height: 368px;
+    margin-bottom: 30px;
+    margin-right: 42px;
+    padding: 16px;
+    position: relative;
+    width: 30%;
+
+    &:nth-child(3n+3) {
+      margin-right: 0;
+    }
+
+    [class$="-button"] {
+        padding: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    &.pending-campaign {
+        &:before, &:after {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        &:before {
+          color: #fff;
+          content: '?';
+          font-size: 24px;
+          padding: 8px 9px;
+          z-index: 1;
+        }
+
+        &:after {
+          border: 30px solid $yellow;
+          border-left: 30px solid transparent;
+          border-bottom: 30px solid transparent;
+          content: '';
+          width: 10px;
+        }
+    }
+
+    &.rejected-campaign {
+        &:before, &:after {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        &:before {
+          color: #fff;
+          content: '!';
+          font-size: 24px;
+          padding: 8px 9px;
+          z-index: 1;
+        }
+
+        &:after {
+          border: 30px solid $red;
+          border-left: 30px solid transparent;
+          border-bottom: 30px solid transparent;
+          content: '';
+          width: 10px;
+        }
+    }
+
+}
+
+.start-campaign-figure {
+  .campaign-figure-img {
+    &:before {
+      color: #dadada;
+      content: '\f009';
+      font-family: 'Icons';
+      font-size: 128px;
+      left: 50%;
+      margin:-64px 0 0 -64px;
+      position: absolute;
+      top: 50%;
+    }
+  }
+}
+
+.campaign-figure-img {
+    background-color: #f4f4f4;
+    box-shadow: 0 0 4px rgba(0,0,0,.35);
+    height: 224px;
+    position: relative;
+    width: 100%;
+
+    img {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.campaign-progress-bar {
+    background-color: #dadada;
+    border-radius: 4px;
+    display: block;
+    height: 13px;
+    width: 100%;
+
+    .campaign-bar-funded {
+        height: 13px;
+        background-color: $green;
+        border-radius: 4px;
+      }
+}
+
+ul.campaign-figure-stats {
+  padding: 5px 0;
+  width: 100%;
+  color: #5e5e5e;
+  text-align: center;
+
+  li {
+    @extend %league-gothic;
+    display: inline-block;
+    margin: auto;
+    width: auto;
+
+    &:first-of-type {
+      float: left;
+    }
+
+    &:last-of-type {
+      float: right;
+    }
+  }
+}
+
+.caption-copy {
+    color: #5a5a5a;
+    font-weight: 600;
+    height: 34px;
+    margin: 15px 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}

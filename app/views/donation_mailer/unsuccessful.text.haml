@@ -1,0 +1,12 @@
+Hello, #{@donation.donor_name},
+\
+Your donation in the amount of #{number_to_currency(@donation.amount_authorized)} to #{@school.name}'s campaign, #{@campaign.title}, was declined.
+\
+You can try to donate again by visiting the campaign link below.
+\
+Please retain this email receipt for your records.
+\
+School: #{@school.name} (#{link_to school_url(@school), school_url(@school)})
+Campaign: #{@campaign.title} (#{link_to campaign_url(@school), campaign_url(@school)})
+\
+= @donation.receipt

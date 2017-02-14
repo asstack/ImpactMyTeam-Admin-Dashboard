@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Campaign:
+  = @donation.campaign
+%p
+  %b Ip address:
+  = @donation.ip_address
+%p
+  %b First name:
+  = @donation.first_name
+%p
+  %b Last name:
+  = @donation.last_name
+%p
+  %b Card type:
+  = @donation.card_type
+%p
+  %b Card expires on:
+  = @donation.card_expires_on
+
+= link_to 'Edit', edit_donation_path(@donation)
+\|
+= link_to 'Back', @campaign

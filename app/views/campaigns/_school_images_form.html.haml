@@ -1,0 +1,24 @@
+.school-logo-container
+  = simple_form_for shallow_resources(@school, @campaign), html: { class: 'edit_campaign_logo_image' }, namespace: 'campaign_logo' do |f|
+    = f.error_notification
+    #campaign-logo.school-logo
+      .image
+        - if f.object.logo_image?
+          = image_tag f.object.logo_image.figure
+      %p.overlay
+        %span.icon &#xf009;
+        Add or Change
+        %br Campaign Logo
+        %br 225px x 225px
+
+      = f.input :logo_image, label: false, input_html: { class: 'jq-fileupload' }
+
+.school-images-upload
+  %ul#uploaded-images
+    - @campaign.campaign_photos.each do |photo|
+      %li{ id: dom_id(photo), data: { delete_path: url_for(photo) } }
+        = image_tag photo.image.thumb
+  = simple_form_for shallow_resources(@campaign, @campaign.campaign_photos.build) do |f|
+    .add-photos-button.black-button.standard-button
+      Add Additional Photos
+      = f.input :image, label: false, input_html: { class: 'jq-fileupload', multiple: true }

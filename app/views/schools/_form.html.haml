@@ -1,0 +1,41 @@
+= simple_form_for @school do |f|
+  = f.error_notification
+  .section
+    = f.input :name, label: false
+    = f.input :website_url, label: false
+    = f.input :athletics_url, label: false
+    = f.input :city, label: false
+    = f.input :region, label: false
+    = f.input :school_type, label: false, collection: School.school_types, prompt: 'Choose type', input_html: { class: 'chzn-select' }
+    = f.input :school_level, label: false, collection: School.school_levels, prompt: 'Choose Level', input_html: { class: 'chzn-select' }
+  .section
+    %h6 Address
+    = f.simple_fields_for :addresses, @default_address do |af|
+      = af.input :address_type, as: :hidden
+      = af.input :line_1, label: false
+      = af.input :line_2, label: false
+      = af.input :city, label: false
+      = af.input :region, label: false
+      = af.input :postal_code, label: false
+      = af.input :phone_number, label: false
+      = af.input :country, label: false, priority: ["United States"], input_html: { class: 'chzn-select' }
+
+  .section
+    %h6 Primary Contact
+    = f.simple_fields_for :contacts, @primary_contact do |cf|
+      = cf.input :email, label: false
+      = cf.input :first_name, label: false
+      = cf.input :last_name, label: false
+      = cf.input :phone_number, label: false
+      = cf.input :contact_type, collection: SchoolContact.contact_types, label: false, prompt: 'Choose Contact Type', input_html: { class: 'chzn-select' }
+
+  .section.affiliation
+    - if @school_role
+      %h6 Affiliation
+      = f.simple_fields_for :school_roles, @school_role do |saf|
+        = saf.input :name, as: :radio_buttons, collection: SchoolRole.role_mappings, label: 'School Affiliation'
+  .form-actions
+    .inner-container
+      = link_to 'Cancel', :back,  class: 'black-button'
+      .pull-right
+        = f.button :submit, class: 'red-button'

@@ -1,0 +1,20 @@
+%figure.campaign-figure{ class: "#{campaign.accessibility_status}-campaign" }
+  .campaign-figure-img
+    = link_to image_tag(campaign.logo_image.figure), campaign
+  %figcaption
+    .caption-copy
+      = link_to campaign.title, campaign
+      %br/
+      = link_to campaign.school.name, campaign.school
+
+    - if campaign.active? || campaign.closed?
+      .campaign-progress-bar
+        .campaign-bar-funded{style: "width: #{campaign.goal_progress * 100}%;"}
+      %ul.campaign-figure-stats
+        %li #{(campaign.goal_progress * 100).round}% Funded
+        %li #{campaign.goal_amount_usd} Goal
+        %li #{distance_of_time_in_words(Time.zone.today, campaign.end_date)} Left
+    - elsif campaign.rejected?
+      = link_to campaign.human_status_name, campaign, {:class => 'large-button red-button'}
+    - else
+      = link_to "Pending - #{campaign.human_status_name}", campaign, {:class => 'large-button yellow-button'}

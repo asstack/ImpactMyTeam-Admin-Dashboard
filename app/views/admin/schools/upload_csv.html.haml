@@ -1,0 +1,5 @@
+= semantic_form_for :schools_csv, url: import_admin_schools_path, method: :post, html: { multipart: true } do |f|
+  .panel
+    = f.inputs do
+      = f.input :file, as: :file
+  = f.actions

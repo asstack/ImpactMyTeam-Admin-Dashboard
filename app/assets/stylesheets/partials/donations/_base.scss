@@ -1,0 +1,77 @@
+body.donations {
+    h1 {
+        color: $red;
+        text-align: center;
+    }
+
+    .h6 {
+        color: #bebebe;
+        margin-bottom: 23px;
+        text-align: center;
+    }
+
+    .main form {
+        margin: 0 auto;
+        width: 674px;
+    }
+
+    .input {
+        display: inline-block;
+        margin-bottom: 18px;
+        vertical-align: top;
+
+        input:not(.boolean) {
+            width: 100%;
+        }
+    }
+
+    .donation_amount_authorized {
+        display: block;
+        margin: 0 auto 18px;
+        width: 168px;
+
+        input {
+            @include rem(1.5);
+            font: {
+                weight: 600;
+            }
+            height: 64px;
+            text-align: center;
+        }
+    }
+
+    .donation_card_verification, .donation_billing_state, .donation_billing_zip {
+        width: 150px;
+
+        input {
+            padding-left: 10px;
+        }
+    }
+
+    .donation_card_number, .donation_billing_address1,
+    .donation_billing_address2 {
+        min-width: 100%;
+    }
+
+    .donation_first_name, .donation_last_name, .donation_email,
+    .donation_phone, .donation_billing_city {
+        width: 324px;
+    }
+
+    .donation_card_brand, .donation_last_name, .donation_phone,
+    .donation_billing_state, .donation_billing_zip, .date .chosen-container {
+        margin-left: 20px;
+    }
+
+    .chosen-container {
+        min-width: 150px;
+    }
+
+    .donation_billing_country .chosen-container {
+        min-width: 672px;
+    }
+
+    footer {
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,29 @@
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.media, .media-body {
+    overflow: hidden;
+}
+
+.media {
+    margin: 6px 6px 0;
+
+    .img {
+        float: left;
+        margin-right: 10px;
+
+        img {
+            display: block;
+        }
+    }
+}
+
+.media-body {
+    display: inline-block;
+    width: 75%;
+}

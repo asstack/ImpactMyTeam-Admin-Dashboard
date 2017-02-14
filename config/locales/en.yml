@@ -1,0 +1,23 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  impact:
+    title: 'Impact My Team'
+    company: 'Impact Athletic'
+    home:
+      title: 'Impact Your Team'
+      summary:
+        crowdfunding: 'Earn equipment for your team through the power of crowdfunding. Fund campaign now and see the small contributions of many turn into advanced equipment for your team.'
+        products: Change the way you compete with the new lineup of rugged athletic training equipment from Impact Athletic
+        equipment_collection: 'Impact Athletic Equipment'
+    pages:
+      success_stories:
+        title: 'Success Stories'
+      what_is_impact:
+        title: 'What is Impact Your Team?'
+
+    campaign:
+      start: 'Start a Campaign'
+      new: 'New Campaign'
+      donation_title: 'Impact Your Team'

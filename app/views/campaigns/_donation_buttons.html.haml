@@ -1,0 +1,10 @@
+%h6.donation-title= t('impact.campaign.donation_title')
+.donation-buttons
+  - [5, 10, 25, 50, 100].each do |amount|
+    = link_to "$#{amount}", new_campaign_donation_path(campaign, donation: { amount_authorized: amount }), class: 'black-button x-small-button donate-amount', data: { amount: amount }
+
+  = simple_form_for [campaign, campaign.donations.build], url: new_campaign_donation_path(campaign), method: :get, html: { class: 'formlet input-append', id: 'new_donation_formlet' } do |f|
+    = f.input :amount_authorized, input_html: { min: 0.00, step: 0.01, max: campaign.goal_remaining, class: 'donate-amount' }
+    = f.button :submit, 'Fuel', class: 'x-small-button'
+
+  = link_to "Buy Out #{campaign.goal_remaining_usd}", new_campaign_donation_path(campaign, donation: { amount_authorized: campaign.goal_remaining }), class: 'black-button x-small-button donate-amount', data: { amount: campaign.goal_remaining }

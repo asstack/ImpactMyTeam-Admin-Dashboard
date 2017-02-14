@@ -1,0 +1,27 @@
+# Add account credentials and API keys here.
+# See http://railsapps.github.com/rails-environment-variables.html
+# This file should be listed in .gitignore to keep your settings secret!
+# Each entry sets a local environment variable and overrides ENV variables in the Unix shell.
+# For example, setting:
+# GMAIL_USERNAME: Your_Gmail_Username
+# makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
+# Add application configuration variables here, as shown below.
+#
+APP_SECRET_TOKEN: 'sEcrET+TokeN'  # copy the ouput of '$ rake secret'
+SENDGRID_USERNAME: Your_Username  # your sendgrid username (required for automated emails)
+SENDGRID_PASSWORD: Your_Password
+ADMIN_FIRST_NAME: First           # your first name. Required before running '$ rake db:setup'
+ADMIN_LAST_NAME: Userman          # your last name. Required before running '$ rake db:setup'
+ADMIN_EMAIL: user@example.com     # your email. Required before running '$ rake db:setup'
+ADMIN_PASSWORD: changeme          # a password. You should change this via the web interface immediately after setup.
+
+GATEWAY_MODE: test          # set to 'production' if the site is ready to accept real transactions
+GATEWAY_ID: gateway-id
+GATEWAY_PASSWORD: password
+
+USE_FOG:    false                     # 'false' for local storage, 'true' for Amazon S3
+AWS_KEY:    <AWS_KEY>                 # your AWS key
+AWS_SECRET: <AWS_SECRET>              # your AWS Secret Token
+AWS_FOLDER: ia01-alpha                # your S3 bucket name
+SECURE_AWS_FOLDER: ia01-alpha-secure  # your S3 Bucket name for uploading secure documents
+FOG_PUBLIC: false                     # 'true' to use private (expiring) links

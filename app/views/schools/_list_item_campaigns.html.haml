@@ -1,0 +1,18 @@
+%ul.campaigns
+  - campaigns.decorate.each do |campaign|
+    %li
+      = link_to campaign_path(campaign), id: dom_id(campaign, campaign.status), class: "campaign media #{campaign.accessibility_status}" do
+        %span.img
+          = image_tag campaign.logo_image.thumb
+        %span.media-body
+          %span.title
+            = campaign.title
+          .campaign-progress-bar
+            .campaign-bar-funded{style: "width: #{campaign.goal_progress * 100}%;"}
+          %ul.status
+            - if campaign.active? || campaign.closed?
+              %li #{(campaign.goal_progress * 100).round}% Funded
+              %li #{campaign.goal_amount_usd} Goal
+              %li #{distance_of_time_in_words(Time.zone.today, campaign.end_date)} Left
+            - else
+              %li= campaign.human_status_name.titleize

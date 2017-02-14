@@ -1,0 +1,9 @@
+%li
+  %a.product-preview{href: '#', id: dom_id(item, :select), data: { product_id: item.id } }
+    .thumbnail= image_tag(item.image.small)
+    %h6
+      #{item.product_name}
+      %br
+        #{item.configuration}
+  .product-group{ id: dom_id(item, :edit)}
+    = render 'cart_items/form', shopping_cart: @shopping_cart, item: item

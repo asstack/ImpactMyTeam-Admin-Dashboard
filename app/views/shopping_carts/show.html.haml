@@ -1,0 +1,24 @@
+%p
+  %b Campaign:
+  = @shopping_cart.campaign
+%p
+  %b Fees:
+  = @shopping_cart.fees
+%p
+  %b Taxes:
+  = @shopping_cart.taxes
+%p
+  %b Subtotal:
+  = @shopping_cart.subtotal
+%p
+  %b Notes:
+  = @shopping_cart.notes
+
+%h5 Items
+%ul
+- @shopping_cart.items.each do |item|
+  %li #{item.name} x #{item.quantity}
+
+= link_to 'Edit', edit_shopping_cart_path(@shopping_cart)
+\|
+= link_to 'Back', campaign_path(@shopping_cart.campaign)
