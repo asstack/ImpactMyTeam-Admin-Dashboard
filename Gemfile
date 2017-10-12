@@ -99,3 +99,5 @@ group :test do
   gem 'vcr'
   gem 'timecop'
 end
+
+gem 'rack-cors', :require => 'rack/cors'
