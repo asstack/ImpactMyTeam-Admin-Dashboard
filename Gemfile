@@ -100,4 +100,4 @@ group :test do
   gem 'timecop'
 end
 
-gem 'rack-cors', :require => 'rack/cors'
+#gem 'rack-cors', :require => 'rack/cors'

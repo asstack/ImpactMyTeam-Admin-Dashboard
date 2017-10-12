@@ -87,12 +87,12 @@ module Ia01CrowdfundingSite
     config.assets.precompile += %w( .svg .eot .woff .ttf )
 
     # Allow 3rd party script to run from site using rack-cors
-    config.middleware.insert_before 0, "Rack::Cors" do
-      allow do
-        origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
-      end
-    end
+    # config.middleware.insert_before 0, "Rack::Cors" do
+    #   allow do
+    #     origins '*'
+    #     resource '*', :headers => :any, :methods => [:get, :post, :options]
+    #   end
+    # end
 
   end
 end
